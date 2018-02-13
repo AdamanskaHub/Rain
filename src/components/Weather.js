@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-class Titles extends Component {
+class Weather extends Component {
     // eslint-disable-next-line
     render() {
         return(
             <div>
-                something
+                Weather
             </div>
         );
     }
 }
 
-export default Titles;
+export default Weather;
