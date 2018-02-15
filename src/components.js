@@ -11,8 +11,8 @@ export const Container = styled.div`
     : null}
 `;
 
-export const Background = styled.img`
-    
+export const Background = styled.div`
+    background-image: url(${});  
 `;
 
 export const TopContainer = styled.div`

@@ -44,17 +44,31 @@ class App extends Component {
     console.log(this.state)
     return (
       <Container>
-        <Background />
+        <Background image=""></Background>
         <TopContainer>
           <Title>Should I take an umbrella in {this.state.weathercity} ?</Title>
         </TopContainer>
 
         <LamaContainer>
-          <LamaImg/>
+          <LamaImg src=""/>
           <Bubble>
+            {this.state.weathermain === "Rainy" ?
             <Speech>
-              Exemple speech
-            </Speech>
+              It's raining!
+            </Speech> :
+            this.state.weathermain === "Clear" ? 
+            <Speech>
+              Not a cloud!
+            </Speech> : 
+            this.state.weathermain === "Clouds" ? 
+            <Speech>
+              It's pretty cloudy.
+            </Speech> :
+            <Speech>
+            Generic weather.
+          </Speech> 
+          }
+            
           </Bubble>
           <BubbleTriangle/>
         </LamaContainer>
