@@ -40,7 +40,7 @@ export const Bubble = styled.div`
 `;
 
 export const Speech = styled.p`
-    
+    font-family: 'Gloria Hallelujah', cursive;
 `;
 
 export const BubbleTriangle = styled.img`
@@ -76,7 +76,7 @@ export const DataText = styled.p`
 `;
 
 export const SpeechData = styled.p`
-    
+    font-family: 'Gloria Hallelujah', cursive;
 `;
 
 
