@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Titles from "./components/Titles";
 import Weather from "./components/Weather";
 import axios from 'axios';
+import { Container, TopContainer, Background, Title, LamaContainer, LamaImg, Bubble, Speech, BubbleTriangle, BlockContainer, Block, TopBlock, MiniTitle, BottomBlock, MiniImg, DataText, SpeechData } from './components';
 
 
 // const API_KEY = "7d19523678b80c45bc75b140ae11de1d";
@@ -18,7 +19,7 @@ class App extends Component {
       weathertempmin: "",
       weathercloud: "",
       weatherrain: "",
-      weathername: "",
+      weathercity: "",
     }
   }
 
@@ -34,7 +35,7 @@ class App extends Component {
           weathertempmin: res.data.main.temp_min,
           weathercloud: res.data.clouds.all,
           weatherrain: res.data.rain3h,
-          weathername: res.data.name,  
+          weathercity: res.data.name,  
         });
       })
   }
@@ -42,12 +43,55 @@ class App extends Component {
   render() {
     console.log(this.state)
     return (
-      <div>
-        <Titles />
-        <span>{this.state.weathertemp}</span>
-        <span>{this.state.weatherdesc}</span>
+      <Container>
+        <Background />
+        <TopContainer>
+          <Title>Should I take an umbrella in {this.state.weathercity} ?</Title>
+        </TopContainer>
 
-      </div>
+        <LamaContainer>
+          <LamaImg/>
+          <Bubble>
+            <Speech>
+              Exemple speech
+            </Speech>
+          </Bubble>
+          <BubbleTriangle/>
+        </LamaContainer>
+
+        <BlockContainer>
+          <Block>
+            <TopBlock>
+              <MiniTitle></MiniTitle>
+              </TopBlock> 
+            <BottomBlock>
+              <MiniImg/>
+              <DataText></DataText>
+              <SpeechData></SpeechData>
+            </BottomBlock>
+          </Block>
+          <Block>
+            <TopBlock>
+              <MiniTitle></MiniTitle>
+              </TopBlock> 
+            <BottomBlock>
+              <MiniImg/>
+              <DataText></DataText>
+              <SpeechData></SpeechData>
+            </BottomBlock>
+          </Block>
+          <Block>
+            <TopBlock>
+              <MiniTitle></MiniTitle>
+              </TopBlock> 
+            <BottomBlock>
+              <MiniImg/>
+              <DataText></DataText>
+              <SpeechData></SpeechData>
+            </BottomBlock>
+          </Block>
+        </BlockContainer>
+      </Container>
     );
   }
 }
