@@ -6,6 +6,8 @@ import { Container, TopContainer, Background, Title, LamaContainer, LamaImg, Bub
 
 
 const API_KEY = "7d19523678b80c45bc75b140ae11de1d";
+const lama = require('./img/lama.png');
+const drops = require('./img/drops.png');
 
 class App extends Component {
   // eslint-disable-next-line
@@ -40,17 +42,17 @@ class App extends Component {
       })
   }
 
-  render() {
+  render(props) {
     console.log(this.state)
     return (
       <Container>
-        <Background image=""></Background>
+        <Background image={drops} lol="green"></Background>
         <TopContainer>
           <Title>Should I take an umbrella in {this.state.weathercity} ?</Title>
         </TopContainer>
 
         <LamaContainer>
-          <LamaImg src={'./img/lama.png'}/>
+          <LamaImg src={lama} alt="lama"/>
           <Bubble>
             {this.state.weathermain === "Rainy" ?
             <Speech>

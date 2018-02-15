@@ -6,13 +6,18 @@ export const Container = styled.div`
     width: 100vw;
     background: linear-gradient(45deg, #ED6886, #C96DD8);
     // box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.4);
-    
+    position: relative;
+    top: -30px;
     ${props => props.onlyOne ? `` 
     : null}
 `;
 
 export const Background = styled.div`
-    background-image: url(${''});  
+    background-image: url(${props => props.image});
+    background-repeat:repeat;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
 `;
 
 export const TopContainer = styled.div`
@@ -32,7 +37,8 @@ export const LamaContainer = styled.div`
 `;
 
 export const LamaImg = styled.img`
-
+    height: 150px;
+    width: auto;
 `;
 
 export const Bubble = styled.div`
