@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Container, TopContainer, Background, Title, LamaContainer, LamaImg, Bubble, Speech, BubbleTriangle, BlockContainer, Block, TopBlock, MiniTitle, BottomBlock, MiniImg, DataText, SpeechData } from './components';
 
 
-// const API_KEY = "7d19523678b80c45bc75b140ae11de1d";
+const API_KEY = "7d19523678b80c45bc75b140ae11de1d";
 
 class App extends Component {
   // eslint-disable-next-line
@@ -50,7 +50,7 @@ class App extends Component {
         </TopContainer>
 
         <LamaContainer>
-          <LamaImg src=""/>
+          <LamaImg src={'./img/lama.png'}/>
           <Bubble>
             {this.state.weathermain === "Rainy" ?
             <Speech>
@@ -84,6 +84,7 @@ class App extends Component {
               <SpeechData></SpeechData>
             </BottomBlock>
           </Block>
+
           <Block>
             <TopBlock>
               <MiniTitle></MiniTitle>
@@ -94,6 +95,7 @@ class App extends Component {
               <SpeechData></SpeechData>
             </BottomBlock>
           </Block>
+          
           <Block>
             <TopBlock>
               <MiniTitle></MiniTitle>

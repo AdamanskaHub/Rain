@@ -12,7 +12,7 @@ export const Container = styled.div`
 `;
 
 export const Background = styled.div`
-    background-image: url(${});  
+    background-image: url(${''});  
 `;
 
 export const TopContainer = styled.div`
@@ -32,7 +32,7 @@ export const LamaContainer = styled.div`
 `;
 
 export const LamaImg = styled.img`
-    
+
 `;
 
 export const Bubble = styled.div`
@@ -40,7 +40,7 @@ export const Bubble = styled.div`
 `;
 
 export const Speech = styled.p`
-    
+    font-family: 'Gloria Hallelujah', cursive;
 `;
 
 export const BubbleTriangle = styled.img`
@@ -76,7 +76,7 @@ export const DataText = styled.p`
 `;
 
 export const SpeechData = styled.p`
-    
+    font-family: 'Gloria Hallelujah', cursive;
 `;
 
 
