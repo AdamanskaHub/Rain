@@ -14,6 +14,8 @@ class App extends Component {
     super();
     this.state = {
       weatherdata: [],
+      weatherdesc: "",
+      weathertemp: "",
     }
   }
 
@@ -21,19 +23,25 @@ class App extends Component {
     axios.get(`http://api.openweathermap.org/data/2.5/weather?q=Barcelona,Spain&appid=7d19523678b80c45bc75b140ae11de1d&units=metric`)
       .then(res => {
         console.log(res)
-        this.setState({ weatherdata: res.data });
+        console.log(res.data.weather[0].main)
+        this.setState({ 
+          weatherdata: res.data,
+          weatherdesc: res.data.weather[0].main,
+          weathertemp: res.data.main.temp, 
+        });
       })
   }
 
 
 
   render() {
-    console.log(this.state.weatherdata.weather)
+    console.log(this.state.weatherdesc)
     return (
       <div>
         Start
         <Titles />
-        <Weather />
+        <span>{this.state.weathertemp}</span>
+        <span>{this.state.weatherdesc}</span>
 
       </div>
     );
