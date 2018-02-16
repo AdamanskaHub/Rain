@@ -5,9 +5,9 @@ export const Container = styled.div`
     height: 100vh;
     width: 100vw;
     background: linear-gradient(45deg, #ED6886, #C96DD8);
-    // box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.4);
     position: relative;
     top: -30px;
+    font-family: 'Amaranth', Arial, sans-serif;
     ${props => props.onlyOne ? `` 
     : null}
 `;
@@ -33,7 +33,10 @@ export const Title = styled.h1`
 `;
 
 export const LamaContainer = styled.div`
-    
+    display:flex;
+    justify-content: center;
+    max-width: 80%;
+    margin: 30px auto;
 `;
 
 export const LamaImg = styled.img`
@@ -41,8 +44,17 @@ export const LamaImg = styled.img`
     width: auto;
 `;
 
+export const BubbleContainer = styled.div`
+    display:flex;
+    margin-left: 20px;
+    align-items: center;
+`;
+
 export const Bubble = styled.div`
-    
+    border-radius:20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.4);
 `;
 
 export const Speech = styled.p`
@@ -50,7 +62,12 @@ export const Speech = styled.p`
 `;
 
 export const BubbleTriangle = styled.img`
-    
+    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.4);
+    // margin-left: 30%;
+    width: 0;
+	height: 0;
+	border-bottom: 15px solid white;
+	border-left: 20px solid transparent;
 `;
 
 export const BlockContainer = styled.div`

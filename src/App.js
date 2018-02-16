@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Titles from "./components/Titles";
 import Weather from "./components/Weather";
 import axios from 'axios';
-import { Container, TopContainer, Background, Title, LamaContainer, LamaImg, Bubble, Speech, BubbleTriangle, BlockContainer, Block, TopBlock, MiniTitle, BottomBlock, MiniImg, DataText, SpeechData } from './components';
+import { Container, TopContainer, Background, Title, LamaContainer, LamaImg, Bubble, Speech, BubbleTriangle, BubbleContainer, BlockContainer, Block, TopBlock, MiniTitle, BottomBlock, MiniImg, DataText, SpeechData } from './components';
 
 
 const API_KEY = "7d19523678b80c45bc75b140ae11de1d";
@@ -53,6 +53,8 @@ class App extends Component {
 
         <LamaContainer>
           <LamaImg src={lama} alt="lama"/>
+          <BubbleContainer>
+          <BubbleTriangle/>
           <Bubble>
             {this.state.weathermain === "Rainy" ?
             <Speech>
@@ -70,15 +72,15 @@ class App extends Component {
             Generic weather.
           </Speech> 
           }
-            
           </Bubble>
-          <BubbleTriangle/>
+          
+          </BubbleContainer>
         </LamaContainer>
 
         <BlockContainer>
           <Block>
             <TopBlock>
-              <MiniTitle></MiniTitle>
+              <MiniTitle>Rain</MiniTitle>
               </TopBlock> 
             <BottomBlock>
               <MiniImg/>
@@ -89,7 +91,7 @@ class App extends Component {
 
           <Block>
             <TopBlock>
-              <MiniTitle></MiniTitle>
+              <MiniTitle>Clouds</MiniTitle>
               </TopBlock> 
             <BottomBlock>
               <MiniImg/>
@@ -100,7 +102,7 @@ class App extends Component {
           
           <Block>
             <TopBlock>
-              <MiniTitle></MiniTitle>
+              <MiniTitle>Temperature</MiniTitle>
               </TopBlock> 
             <BottomBlock>
               <MiniImg/>
