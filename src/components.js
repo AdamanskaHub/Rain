@@ -71,19 +71,24 @@ export const BubbleTriangle = styled.img`
 `;
 
 export const BlockContainer = styled.div`
-    
+    display: flex;
+    justify-content: center;
 `;
 
 export const Block = styled.div`
-    
+    display: flex;
+    justify-content: center;
+    height: 20vh;
+    width: 30vw;
+    background-color: white;
+    margin: 10px;
 `;
 
 export const TopBlock = styled.div`
-    
 `;
 
 export const MiniTitle = styled.h3`
-    
+
 `;
 
 export const BottomBlock = styled.div`
