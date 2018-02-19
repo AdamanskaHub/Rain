@@ -17,7 +17,7 @@ class App extends Component {
       weatherdes: "",
       weathertemp: "",
       weathercloud: "",
-      // weatherrain: "",
+      weatherrain: "",
       weathercity: "",
     }
   }
@@ -32,8 +32,7 @@ class App extends Component {
           weatherdes: res.data.weather[0].description,
           weathertemp: res.data.main.temp,
           weathercloud: res.data.clouds.all,
-          // weatherrain:res.data.rain["3h"] !== undefined ?
-          // {weatherrain: res.data.rain["3h"],} : null,
+          weatherrain: res.data.rain && res.data.rain["3h"] ? res.data.rain["3h"] : null,
           weathercity: res.data.name,
         });
       })
