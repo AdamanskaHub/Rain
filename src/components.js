@@ -2,12 +2,14 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     background-color: #333;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
+    padding-bottom: 30px;
     width: 100vw;
     background: linear-gradient(45deg, #ED6886, #C96DD8);
     position: relative;
-    top: -30px;
     font-family: 'Amaranth', Arial, sans-serif;
+    z-index:5;
     ${props => props.onlyOne ? `` 
     : null}
 `;
@@ -15,9 +17,14 @@ export const Container = styled.div`
 export const Background = styled.div`
     background-image: url(${props => props.image});
     background-repeat:repeat;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     position: absolute;
+    z-index:0;
+`;
+
+export const Relative = styled.div`
+    position: relative;
 `;
 
 export const TopContainer = styled.div`
@@ -28,8 +35,15 @@ export const TopContainer = styled.div`
 
 export const Title = styled.h1`
     color: #fff;
-    font-size: 2em;
-    font-family: 'Amaranth', Arial, sans-serif;
+    font-size: 2.3em;
+    font-family: 'Amaranth',Arial,sans-serif;
+    margin: 0;
+    padding: 40px 0px;
+    text-align: center;
+    max-width: 50vw;
+    @media (max-width:700px) {
+        max-width: 75vw;
+    }
 `;
 
 export const LamaContainer = styled.div`
@@ -37,6 +51,7 @@ export const LamaContainer = styled.div`
     justify-content: center;
     max-width: 80%;
     margin: 30px auto;
+    z-index:10;
 `;
 
 export const LamaImg = styled.img`
@@ -48,6 +63,10 @@ export const BubbleContainer = styled.div`
     display:flex;
     margin-left: 20px;
     align-items: center;
+    max-width: 70%;
+    @media (max-width: 700px) {
+        margin-left: 5px;
+    }
 `;
 
 export const Bubble = styled.div`
@@ -59,6 +78,10 @@ export const Bubble = styled.div`
 
 export const Speech = styled.p`
     font-family: 'Gloria Hallelujah', cursive;
+    font-size: 1.7em;
+    margin: 0;
+    line-height: 1.2;
+    text-align: center;
 `;
 
 export const BubbleTriangle = styled.img`
@@ -71,19 +94,47 @@ export const BubbleTriangle = styled.img`
 `;
 
 export const BlockContainer = styled.div`
-    
+    display: flex;
+    justify-content: space-evenly;
+    z-index:15;
+    @media (max-width: 700px) {
+        flex-direction: column;
+        width: 90vw;
+        align-items: center;
+        margin: 0 auto;
+    }
 `;
 
 export const Block = styled.div`
-    
+    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.4);
+    // padding: 10px;
+    background-color: #fff;
+    min-width: 20%;
+    border-radius: 8px;
+    @media (max-width: 700px) {
+        width: 80%;
+        margin-bottom: 10px;
+    }
 `;
 
 export const TopBlock = styled.div`
-    
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+    ${props => props.clouds ? `
+    background: linear-gradient(45deg, #E76993, #D8D8D8);
+    ` 
+    : props.rain ? `
+    background: linear-gradient(45deg, #CB6DD2, #50AFED);
+    `
+    : props.temp ? `
+    background: linear-gradient(45deg, #E96990, #EDB51E);
+    `
+    : null}
 `;
 
 export const MiniTitle = styled.h3`
-    
+    margin: 0;
+    color: #fff;  
 `;
 
 export const BottomBlock = styled.div`
@@ -95,11 +146,14 @@ export const MiniImg = styled.img`
 `;
 
 export const DataText = styled.p`
-    
+    margin: 0;
+    padding: 0 10px;
 `;
 
 export const SpeechData = styled.p`
     font-family: 'Gloria Hallelujah', cursive;
+    margin: 0;
+    padding: 0 10px 10px 10px;
 `;
 
 
