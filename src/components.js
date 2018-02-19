@@ -101,7 +101,7 @@ export const BlockContainer = styled.div`
         flex-direction: column;
         width: 90vw;
         align-items: center;
-        margin: 0 auto;
+        margin: 0 auto; 
     }
 `;
 
