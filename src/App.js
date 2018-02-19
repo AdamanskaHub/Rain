@@ -19,7 +19,7 @@ class App extends Component {
       weathertemp: "",
       weathercloud: "",
       weatherrain: "",
-      weathercity: "",
+      weathercity: "Barcelona",
       popupVisible: false,
     }
   }
@@ -36,7 +36,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=Barcelona,Spain&appid=7d19523678b80c45bc75b140ae11de1d&units=metric`)
+    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.weathercity},Spain&appid=7d19523678b80c45bc75b140ae11de1d&units=metric`)
       .then(res => {
         // console.log(res.data.rain["3h"])
         this.setState({
