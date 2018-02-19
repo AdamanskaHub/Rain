@@ -45,7 +45,11 @@ class App extends Component {
         <Background image={drops} lol="green"></Background>
         <Relative>
           <TopContainer>
-            <Title>Should I take an umbrella in {this.state.weathercity}?</Title>
+            <Title>Should I take an umbrella in 
+              <span onClick={this.cityClick}>{this.state.weathercity}</span>
+              ?</Title>
+              {this.state.profilePopupVisible ? 
+              <div><p>Madrid</p> <p>Valencia</p> <p>Malaga</p></div> : null}
           </TopContainer>
 
           <LamaContainer>
