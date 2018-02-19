@@ -11,6 +11,7 @@ class App extends Component {
   // eslint-disable-next-line
   constructor() {
     super();
+    this.cityClick = this.cityClick.bind(this);
     this.state = {
       weatherdata: [], 
       weathermain: "",
@@ -19,7 +20,19 @@ class App extends Component {
       weathercloud: "",
       weatherrain: "",
       weathercity: "",
+      popupVisible: false,
     }
+  }
+
+  cityClick() {
+    if (!this.state.popupVisible) {
+        document.addEventListener("click", this.cityClick, false);
+    } else {
+        document.removeEventListener("click", this.cityClick, false);
+    }
+    this.setState({
+        popupVisible: !this.state.popupVisible
+    });
   }
 
   componentDidMount() {
@@ -48,7 +61,7 @@ class App extends Component {
             <Title>Should I take an umbrella in 
               <span onClick={this.cityClick}>{this.state.weathercity}</span>
               ?</Title>
-              {this.state.profilePopupVisible ? 
+              {this.state.popupVisible ? 
               <div><p>Madrid</p> <p>Valencia</p> <p>Malaga</p></div> : null}
           </TopContainer>
 
