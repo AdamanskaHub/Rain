@@ -31,6 +31,7 @@ export const TopContainer = styled.div`
     display: flex;
     margin-top: 30px;
     justify-content: center;
+    position: relative;
 `;
 
 export const Title = styled.h1`
@@ -44,6 +45,13 @@ export const Title = styled.h1`
     @media (max-width:700px) {
         max-width: 75vw;
     }
+`;
+
+export const DD = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    position: absolute;
 `;
 
 export const LamaContainer = styled.div`
@@ -138,11 +146,13 @@ export const MiniTitle = styled.h3`
 `;
 
 export const BottomBlock = styled.div`
-    
+    position: relative;
 `;
 
 export const MiniImg = styled.img`
-    
+    position: absolute;
+    right: 10px;
+    top: 5px;
 `;
 
 export const DataText = styled.p`

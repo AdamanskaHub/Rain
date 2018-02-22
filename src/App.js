@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Container, Relative, TopContainer, Background, Title, LamaContainer, LamaImg, Bubble, Speech, BubbleTriangle, BubbleContainer, BlockContainer, Block, TopBlock, MiniTitle, BottomBlock, MiniImg, DataText, SpeechData } from './components';
+import { Container, Relative, TopContainer, DD, Background, Title, LamaContainer, LamaImg, Bubble, Speech, BubbleTriangle, BubbleContainer, BlockContainer, Block, TopBlock, MiniTitle, BottomBlock, MiniImg, DataText, SpeechData } from './components';
 
 
 const API_KEY = "7d19523678b80c45bc75b140ae11de1d";
 const lama = require('./img/lama.png');
 const drops = require('./img/drops.png');
+const gouttes = require('./img/gouttes.png');
+const temp = require('./img/temp.png');
+const clouds = require('./img/cloudss.png');
+const happy = require('./img/happy.png');
+const excited = require('./img/excited.png');
+const sad = require('./img/sad.png');
+const horrified = require('./img/horrified.png');
 
 class App extends Component {
   // eslint-disable-next-line
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.cityClick = this.cityClick.bind(this);
     this.state = {
       weatherdata: [], 
@@ -35,8 +42,14 @@ class App extends Component {
     });
   }
 
-  componentDidMount() {
-    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.weathercity},Spain&appid=7d19523678b80c45bc75b140ae11de1d&units=metric`)
+  changeCity(e) {
+    // e.preventDefault();
+    this.setState({weathercity : e});
+    this.getTheStuff(e)
+  }
+
+  getTheStuff(city) {
+    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city},Spain&appid=7d19523678b80c45bc75b140ae11de1d&units=metric`)
       .then(res => {
         // console.log(res.data.rain["3h"])
         this.setState({
@@ -51,22 +64,31 @@ class App extends Component {
       })
   }
 
+  componentDidMount() {
+    this.getTheStuff("Barcelona");
+  }
+
   render(props) {
-    console.log(this.state)
+    let tempText = getTempText(this.state.weathertemp);
     return (
       <Container>
-        <Background image={drops} lol="green"></Background>
+        <Background image={drops}></Background>
         <Relative>
           <TopContainer>
-            <Title>Should I take an umbrella in 
+            <Title>Should I  an umbrella in 
               <span onClick={this.cityClick}>{this.state.weathercity}</span>
               ?</Title>
               {this.state.popupVisible ? 
-              <div><p>Madrid</p> <p>Valencia</p> <p>Malaga</p></div> : null}
+              <DD>
+                <p onClick={()=>this.changeCity("Barcelona")}>Barcelona</p>
+                <p onClick={()=>this.changeCity("Madrid")}>Madrid</p> 
+                <p onClick={()=>this.changeCity("Valencia")}>Valencia</p> 
+                <p onClick={()=>this.changeCity("Malaga")}>Malaga</p>
+                </DD> : null}
           </TopContainer>
 
           <LamaContainer>
-            <LamaImg src={lama} alt="lama" />
+            <LamaImg src={this.state.weathermain === "clear sky" ? happy : horrified} alt="lama" />
             <BubbleContainer>
               <BubbleTriangle />
               <Bubble><Speech>
@@ -99,7 +121,7 @@ class App extends Component {
                 <MiniTitle>Rain</MiniTitle>
               </TopBlock>
               <BottomBlock>
-                <MiniImg />
+                <MiniImg gouttesimg={gouttes} src={gouttes}/>
                 <DataText>{this.state.weatherrain === 0 ? "Not a drop" :
                   this.state.weatherrain > 0.01 ? "A bit of rain" : this.state.weatherrain > 1 ? "Some rain" : this.state.weatherrain > 2 ? "Quite a lot of rain" : this.state.weatherrain > 3 ? "Wow! It's pouring!" : "Not a drop"}</DataText>
                 <SpeechData>{this.state.weatherrain === 0 ? "That's good" :
@@ -112,7 +134,7 @@ class App extends Component {
                 <MiniTitle>Clouds</MiniTitle>
               </TopBlock>
               <BottomBlock>
-                <MiniImg />
+                <MiniImg cloudsimg={clouds} src={clouds}/>
                 <DataText> {this.state.weathercloud === 0 ? "Clear skies!" :
                   this.state.weathercloud > 0 ? "A few clouds" : this.state.weathercloud > 30 ? "Definitely some clouds" : this.state.weathercloud > 60 ? "It's quite cloudy" : this.state.weathercloud > 90 ? "Clouds, clouds everywhere" : "Clear skies!"}</DataText>
                 <SpeechData>
@@ -127,12 +149,19 @@ class App extends Component {
                 <MiniTitle>Temperature</MiniTitle>
               </TopBlock>
               <BottomBlock>
-                <MiniImg />
+                <MiniImg tempimg={temp} src={temp}/>
                 <DataText>
                   Currently it's {this.state.weathertemp}° outside
               </DataText>
-                <SpeechData>{this.state.weathertemp <= 0 ? "It's freezing outside!" :
-                  this.state.weathertemp > 0 ? "It's cold, take a coat" : this.state.weathertemp > 10 ? "Don't be decieved, it's pretty cold" : this.state.weathertemp > 15 ? "It's nice, a bit chilly maybe" : this.state.weathertemp > 20 ? "Great temperature" : this.state.weathertemp > 25 ? "Beach temperature" : this.state.weathertemp > 30 ? "It's quite hot" : this.state.weathertemp > 35 ? "It's super hot!" : "Errr please go out and check the temperature for me"}</SpeechData>
+                <SpeechData>
+                  getTempText(this.state.weathertemp)
+                {/* {this.state.weathertemp <= 0 ? "It's freezing outside!" :
+                  this.state.weathertemp > 0 ? "It's cold, take a coat" : this.state.weathertemp > 10 ? "Don't be decieved, it's pretty cold" : this.state.weathertemp > 15 ? "It's nice, a bit chilly maybe" : this.state.weathertemp > 20 ? "Great temperature" : 
+                  this.state.weathertemp > 25 ? "Beach temperature" : 
+                  this.state.weathertemp > 30 ? "It's quite hot" : 
+                  this.state.weathertemp > 35 ? "It's super hot!" : 
+                  "Errr please go out and check the temperature for me"} */}
+                  </SpeechData>
               </BottomBlock>
             </Block>
           </BlockContainer>
@@ -141,6 +170,17 @@ class App extends Component {
     );
   }
 }
+
+function getTempText(x){
+  if (x<=0) {"It's freezing outside!"}
+  else if(x>0) {"It's cold, take a coat"}
+  else if(x>10) {"Don't be decieved, it's pretty cold"}
+  else if(x>15) {"It's nice, a bit chilly maybe"}
+  else if(x>20) {"Great temperature"}
+  else if(x>25) {"Beach temperature"}
+  else if(x>30) {"It's quite hot"}
+  else if(x>35) {"It's super hot!"}
+};
 
 export default App;
 
