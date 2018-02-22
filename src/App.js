@@ -8,7 +8,7 @@ const lama = require('./img/lama.png');
 const drops = require('./img/drops.png');
 const gouttes = require('./img/gouttes.png');
 const temp = require('./img/temp.png');
-const clouds = require('./img/cloudss.png');
+const clouds = require('./img/clouds.png');
 const happy = require('./img/happy.png');
 const excited = require('./img/excited.png');
 const sad = require('./img/sad.png');
@@ -46,6 +46,8 @@ class App extends Component {
     // e.preventDefault();
     this.setState({weathercity : e});
     this.getTheStuff(e)
+    display(this.state.weathertemp)
+    // getTempText(this.state.weathertemp)
   }
 
   getTheStuff(city) {
@@ -154,13 +156,8 @@ class App extends Component {
                   Currently it's {this.state.weathertemp}° outside
               </DataText>
                 <SpeechData>
-                  getTempText(this.state.weathertemp)
-                {/* {this.state.weathertemp <= 0 ? "It's freezing outside!" :
-                  this.state.weathertemp > 0 ? "It's cold, take a coat" : this.state.weathertemp > 10 ? "Don't be decieved, it's pretty cold" : this.state.weathertemp > 15 ? "It's nice, a bit chilly maybe" : this.state.weathertemp > 20 ? "Great temperature" : 
-                  this.state.weathertemp > 25 ? "Beach temperature" : 
-                  this.state.weathertemp > 30 ? "It's quite hot" : 
-                  this.state.weathertemp > 35 ? "It's super hot!" : 
-                  "Errr please go out and check the temperature for me"} */}
+                  {/* {getTempText(this.state.weathertemp)} */}
+                  {display(this.state.weathertemp)}
                   </SpeechData>
               </BottomBlock>
             </Block>
@@ -172,15 +169,20 @@ class App extends Component {
 }
 
 function getTempText(x){
-  if (x<=0) {"It's freezing outside!"}
-  else if(x>0) {"It's cold, take a coat"}
-  else if(x>10) {"Don't be decieved, it's pretty cold"}
-  else if(x>15) {"It's nice, a bit chilly maybe"}
-  else if(x>20) {"Great temperature"}
-  else if(x>25) {"Beach temperature"}
-  else if(x>30) {"It's quite hot"}
-  else if(x>35) {"It's super hot!"}
+  console.log("gettemp")
+  if (x<=0) {return "It's freezing outside!"}
+  else if(x>0) {return "It's cold, take a coat"}
+  else if(x>10) {return "Don't be decieved, it's pretty cold"}
+  else if(x>15) {return "It's nice, a bit chilly maybe"}
+  else if(x>20) {return "Great temperature"}
+  else if(x>25) {return "Beach temperature"}
+  else if(x>30) {return "It's quite hot"}
+  else if(x>35) {return "It's super hot!"}
 };
+
+function display(x) {
+  return getTempText(x)
+}
 
 export default App;
 

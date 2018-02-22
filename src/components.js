@@ -153,6 +153,7 @@ export const MiniImg = styled.img`
     position: absolute;
     right: 10px;
     top: 5px;
+    height: 50px;
 `;
 
 export const DataText = styled.p`
