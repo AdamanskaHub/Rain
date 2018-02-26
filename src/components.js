@@ -48,14 +48,30 @@ export const Title = styled.h1`
 `;
 
 export const DD = styled.div`
+    transition: all .3s ease-in-out;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 10px 0;
     position: absolute;
+    top: 120px;
+    background-color: #fff;
+    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.4);
+`;
+
+export const Cities = styled.span`
+    transition: all .2s ease-in-out;    
+    margin: 0;
+    padding: 2px 15px;
+    &:hover {
+        background: linear-gradient(45deg, #ED6886, #C96DD8);
+        color: #fff;
+        cursor: pointer;
+    }
 `;
 
 export const LamaContainer = styled.div`
     display:flex;
+    transition: all .3s ease-in-out;
     justify-content: center;
     max-width: 80%;
     margin: 30px auto;
@@ -64,6 +80,7 @@ export const LamaContainer = styled.div`
 
 export const LamaImg = styled.img`
     height: 150px;
+    transition: all .3s ease-in-out;
     width: auto;
 `;
 
@@ -78,6 +95,7 @@ export const BubbleContainer = styled.div`
 `;
 
 export const Bubble = styled.div`
+    transition: all .3s ease-in-out;
     border-radius:20px;
     padding: 20px;
     background-color: #fff;
@@ -85,6 +103,7 @@ export const Bubble = styled.div`
 `;
 
 export const Speech = styled.p`
+    transition: all .3s ease-in-out;
     font-family: 'Gloria Hallelujah', cursive;
     font-size: 1.7em;
     margin: 0;
@@ -117,7 +136,7 @@ export const Block = styled.div`
     box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.4);
     // padding: 10px;
     background-color: #fff;
-    min-width: 20%;
+    width: 30%;
     border-radius: 8px;
     @media (max-width: 700px) {
         width: 80%;
@@ -158,6 +177,7 @@ export const MiniImg = styled.img`
 
 export const DataText = styled.p`
     margin: 0;
+    margin-top: 10px;
     padding: 0 10px;
 `;
 
@@ -166,6 +186,7 @@ export const SpeechData = styled.p`
     margin: 0;
     padding: 0 10px 10px 10px;
 `;
+
 
 
 

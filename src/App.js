@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Container, Relative, TopContainer, DD, Background, Title, LamaContainer, LamaImg, Bubble, Speech, BubbleTriangle, BubbleContainer, BlockContainer, Block, TopBlock, MiniTitle, BottomBlock, MiniImg, DataText, SpeechData } from './components';
+import { Container, Relative, TopContainer, DD, Background, Title, LamaContainer, LamaImg, Bubble, Speech, BubbleTriangle, BubbleContainer, BlockContainer, Block, TopBlock, MiniTitle, BottomBlock, MiniImg, DataText, SpeechData, Cities } from './components';
 
 
 const API_KEY = "7d19523678b80c45bc75b140ae11de1d";
@@ -80,21 +80,43 @@ class App extends Component {
         <Background image={drops}></Background>
         <Relative>
           <TopContainer>
-            <Title>Should I  an umbrella in 
+            <Title>What's the weather like in&nbsp;  
               <span onClick={this.cityClick}>{this.state.weathercity}</span>
               ?</Title>
               {this.state.popupVisible ? 
               <DD>
-                <p onClick={()=>this.changeCity("Barcelona")}>Barcelona</p>
-                <p onClick={()=>this.changeCity("Madrid")}>Madrid</p> 
-                <p onClick={()=>this.changeCity("Valencia")}>Valencia</p> 
-                <p onClick={()=>this.changeCity("Malaga")}>Malaga</p>
-                <p onClick={()=>this.changeCity("Oslo")}>Oslo</p>
+                <Cities onClick={()=>this.changeCity("Barcelona")}>Barcelona</Cities>
+                <Cities onClick={()=>this.changeCity("Madrid")}>Madrid</Cities> 
+                <Cities onClick={()=>this.changeCity("Valencia")}>Valencia</Cities> 
+                <Cities onClick={()=>this.changeCity("Malaga")}>Malaga</Cities>
+                <Cities onClick={()=>this.changeCity("Oslo")}>Oslo</Cities>
                 </DD> : null}
           </TopContainer>
 
           <LamaContainer>
-            <LamaImg src={this.state.weathermain === "clear sky" ? happy : horrified} alt="lama" />
+            <LamaImg src={this.state.weathermain === "rain" ? sad
+                  :
+                  this.state.weathermain === "Clear" ? excited : 
+                  this.state.weathermain === "Clouds" ? happy 
+                  :
+                  this.state.weathermain === "clear sky" ? excited
+                  :
+                  this.state.weathermain === "few clouds" ? happy : 
+                  this.state.weathermain === "scattered clouds" ? happy 
+                  : 
+                  this.state.weathermain === "broken clouds" ? sad
+                  :
+                  this.state.weathermain === "Drizzle" ? sad
+                  :
+                  this.state.weathermain === "shower rain" ? sad : 
+                  this.state.weathermain === "thunderstorm" ? excited
+                  :
+                  this.state.weathermain === "mist" ? sad
+                  :
+                  this.state.weathermain === "snow" ? excited
+                  : 
+                  sad
+                } alt="lama" />
             <BubbleContainer>
               <BubbleTriangle />
               <Bubble><Speech>
@@ -108,13 +130,15 @@ class App extends Component {
                   : 
                   this.state.weathermain === "broken clouds" ? "Are those dark clouds..."
                   :
+                  this.state.weathermain === "Drizzle" ? "It's drizzling. I hope it stops soon."
+                  :
                   this.state.weathermain === "shower rain" ? "Oh well, it's raining. But not that much." : this.state.weathermain === "thunderstorm" ? "Thunderstorms. Let's stay inside." 
                   :
                   this.state.weathermain === "mist" ? "Spooky, I like it."
                   :
                   this.state.weathermain === "snow" ? "Yay! Let's build a snowman!"
                   : 
-                  "Currently I'm sleeping so look outside your window if you want the weather."
+                  "Good question indeed. What's the weather like?"
                 }</Speech>
               </Bubble>
 
