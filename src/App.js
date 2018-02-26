@@ -46,7 +46,6 @@ class App extends Component {
     // e.preventDefault();
     this.setState({weathercity : e});
     this.getTheStuff(e)
-    display(this.state.weathertemp)
     // getTempText(this.state.weathertemp)
   }
 
@@ -70,6 +69,10 @@ class App extends Component {
     this.getTheStuff("Barcelona");
   }
 
+  // <Title currentCity={this.state.city} changeCity={(city) => this.changeCity(city) }>
+
+  // <p onClick={props.changeCity("Barcelona")}>Barcelona</p>
+
   render(props) {
     let tempText = getTempText(this.state.weathertemp);
     return (
@@ -86,6 +89,7 @@ class App extends Component {
                 <p onClick={()=>this.changeCity("Madrid")}>Madrid</p> 
                 <p onClick={()=>this.changeCity("Valencia")}>Valencia</p> 
                 <p onClick={()=>this.changeCity("Malaga")}>Malaga</p>
+                <p onClick={()=>this.changeCity("Oslo")}>Oslo</p>
                 </DD> : null}
           </TopContainer>
 
@@ -156,8 +160,7 @@ class App extends Component {
                   Currently it's {this.state.weathertemp}° outside
               </DataText>
                 <SpeechData>
-                  {/* {getTempText(this.state.weathertemp)} */}
-                  {display(this.state.weathertemp)}
+                  {getTempText(this.state.weathertemp)}
                   </SpeechData>
               </BottomBlock>
             </Block>
@@ -179,10 +182,6 @@ function getTempText(x){
   else if(x>30) {return "It's quite hot"}
   else if(x>35) {return "It's super hot!"}
 };
-
-function display(x) {
-  return getTempText(x)
-}
 
 export default App;
 
