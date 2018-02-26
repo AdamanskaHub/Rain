@@ -44,11 +44,9 @@ class App extends Component {
   }
 
   changeCity(e) {
-    // e.preventDefault();
     this.setState({weathercity : e});
     this.getTheStuff(e)
     display(this.state.weathertemp)
-    // getTempText(this.state.weathertemp)
   }
 
   getTheStuff(city) {
