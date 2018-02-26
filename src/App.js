@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Container, Relative, TopContainer, DD, Background, Title, LamaContainer, LamaImg, Bubble, Speech, BubbleTriangle, BubbleContainer, BlockContainer, Block, TopBlock, MiniTitle, BottomBlock, MiniImg, DataText, SpeechData } from './components';
-
+import Lama from './components/Lama';
 
 const API_KEY = "7d19523678b80c45bc75b140ae11de1d";
-const lama = require('./img/lama.png');
+
 const drops = require('./img/drops.png');
 const gouttes = require('./img/gouttes.png');
 const temp = require('./img/temp.png');
 const clouds = require('./img/clouds.png');
+
+const lama = require('./img/lama.png');
 const happy = require('./img/happy.png');
 const excited = require('./img/excited.png');
 const sad = require('./img/sad.png');
 const horrified = require('./img/horrified.png');
 
 class App extends Component {
-  // eslint-disable-next-line
   constructor(props) {
     super(props);
     this.cityClick = this.cityClick.bind(this);
@@ -76,6 +77,7 @@ class App extends Component {
       <Container>
         <Background image={drops}></Background>
         <Relative>
+
           <TopContainer>
             <Title>Should I  an umbrella in 
               <span onClick={this.cityClick}>{this.state.weathercity}</span>
@@ -89,33 +91,7 @@ class App extends Component {
                 </DD> : null}
           </TopContainer>
 
-          <LamaContainer>
-            <LamaImg src={this.state.weathermain === "clear sky" ? happy : horrified} alt="lama" />
-            <BubbleContainer>
-              <BubbleTriangle />
-              <Bubble><Speech>
-                {this.state.weathermain === "rain" ? "It's raining! At least it's good for the plants..."
-                  :
-                  this.state.weathermain === "Clear" ? "Not a cloud!" : this.state.weathermain === "Clouds" ? "It's pretty cloudy. This cloud looks like you..." 
-                  :
-                  this.state.weathermain === "clear sky" ? "Perfect sky! We can go out and enjoy it!"
-                  :
-                  this.state.weathermain === "few clouds" ? "Slightly cloudy sky." : this.state.weathermain === "scattered clouds" ? "Barely any clouds." 
-                  : 
-                  this.state.weathermain === "broken clouds" ? "Are those dark clouds..."
-                  :
-                  this.state.weathermain === "shower rain" ? "Oh well, it's raining. But not that much." : this.state.weathermain === "thunderstorm" ? "Thunderstorms. Let's stay inside." 
-                  :
-                  this.state.weathermain === "mist" ? "Spooky, I like it."
-                  :
-                  this.state.weathermain === "snow" ? "Yay! Let's build a snowman!"
-                  : 
-                  "Currently I'm sleeping so look outside your window if you want the weather."
-                }</Speech>
-              </Bubble>
-
-            </BubbleContainer>
-          </LamaContainer>
+            <Lama />
 
           <BlockContainer>
             <Block>
@@ -168,8 +144,8 @@ class App extends Component {
   }
 }
 
-function getTempText(x){
-  console.log("gettemp")
+function getTempText(x) {
+  // console.log("gettemp")
   if (x<=0) {return "It's freezing outside!"}
   else if(x>0) {return "It's cold, take a coat"}
   else if(x>10) {return "Don't be decieved, it's pretty cold"}
