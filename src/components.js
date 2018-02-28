@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+    transition: all .6s ease-in-out;
     background-color: #333;
     height: 100%;
     min-height: 100vh;
     padding-bottom: 30px;
     width: 100vw;
-    background: linear-gradient(45deg, #ED6886, #C96DD8);
+    background: linear-gradient(120deg, ${props=>props.colorOne}, ${props=>props.colorTwo});
     position: relative;
     font-family: 'Amaranth', Arial, sans-serif;
     z-index:5;
@@ -79,7 +80,7 @@ export const LamaContainer = styled.div`
 `;
 
 export const LamaImg = styled.img`
-    height: 150px;
+    // height: 150px;
     transition: all .3s ease-in-out;
     width: auto;
 `;

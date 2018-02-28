@@ -67,6 +67,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getTheStuff("Barcelona");
+    console.log("comp did mount")
   }
 
   // <Title currentCity={this.state.city} changeCity={(city) => this.changeCity(city) }>
@@ -76,7 +77,7 @@ class App extends Component {
   render(props) {
     let tempText = getTempText(this.state.weathertemp);
     return (
-      <Container>
+      <Container colorOne={this.state.weathermain === "Rain" ?"#54ACEB" : this.state.weathermain === "Clear" ? "#EDB124" : "#ED6886" } colorTwo="#E66996">
         <Background image={drops}></Background>
         <Relative>
           <TopContainer>
@@ -94,7 +95,7 @@ class App extends Component {
           </TopContainer>
 
           <LamaContainer>
-            <LamaImg src={this.state.weathermain === "rain" ? sad
+            <LamaImg src={this.state.weathermain === "Rain" ? sad
                   :
                   this.state.weathermain === "Clear" ? excited : 
                   this.state.weathermain === "Clouds" ? happy 
@@ -120,7 +121,7 @@ class App extends Component {
             <BubbleContainer>
               <BubbleTriangle />
               <Bubble><Speech>
-                {this.state.weathermain === "rain" ? "It's raining! At least it's good for the plants..."
+                {this.state.weathermain === "Rain" ? "It's raining! At least it's good for the plants..."
                   :
                   this.state.weathermain === "Clear" ? "Not a cloud!" : this.state.weathermain === "Clouds" ? "It's pretty cloudy. This cloud looks like you..." 
                   :
