@@ -42,7 +42,7 @@ export const Title = styled.h1`
     margin: 0;
     padding: 40px 0px;
     text-align: center;
-    max-width: 50vw;
+    max-width: 590px;
     @media (max-width:700px) {
         max-width: 75vw;
     }
@@ -54,7 +54,7 @@ export const DD = styled.div`
     flex-direction: column;
     padding: 10px 0;
     position: absolute;
-    top: 120px;
+    top: 130px;
     background-color: #fff;
     box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.4);
 `;

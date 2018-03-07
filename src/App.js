@@ -28,6 +28,7 @@ class App extends Component {
       weatherrain: "",
       weathercity: "Barcelona",
       popupVisible: false,
+      colorOneX: "#ED6886",
     }
   }
 
@@ -67,7 +68,12 @@ class App extends Component {
 
   componentDidMount() {
     this.getTheStuff("Barcelona");
-    console.log("comp did mount")
+  }
+
+  componentDidUpdate() {
+    console.log("comp did UPDATE");
+    this.state.weathermain === "Rain" ?this.state.colorOneX="#54ACEB" : "red";
+    console.log(this.state.colorOneX)
   }
 
   // <Title currentCity={this.state.city} changeCity={(city) => this.changeCity(city) }>
@@ -77,7 +83,11 @@ class App extends Component {
   render(props) {
     let tempText = getTempText(this.state.weathertemp);
     return (
-      <Container colorOne={this.state.weathermain === "Rain" ?"#54ACEB" : this.state.weathermain === "Clear" ? "#EDB124" : "#ED6886" } colorTwo="#E66996">
+      <Container 
+      // colorOne={this.state.weathermain === "Rain" ?"#54ACEB" : this.state.weathermain === "Clear" ? "#EDB124" : "#ED6886" }
+      colorOne={this.state.colorOneX}
+       colorTwo="#E66996"
+      >
         <Background image={drops}></Background>
         <Relative>
           <TopContainer>
@@ -88,58 +98,35 @@ class App extends Component {
               <DD>
                 <Cities onClick={()=>this.changeCity("Barcelona")}>Barcelona</Cities>
                 <Cities onClick={()=>this.changeCity("Madrid")}>Madrid</Cities> 
-                <Cities onClick={()=>this.changeCity("Valencia")}>Valencia</Cities> 
-                <Cities onClick={()=>this.changeCity("Malaga")}>Malaga</Cities>
-                <Cities onClick={()=>this.changeCity("Oslo")}>Oslo</Cities>
+                <Cities onClick={()=>this.changeCity("Valencia")}>Valencia</Cities>
+                <Cities onClick={()=>this.changeCity("Sevilla")}>Sevilla</Cities>
                 </DD> : null}
           </TopContainer>
 
           <LamaContainer>
-            <LamaImg src={this.state.weathermain === "Rain" ? sad
+            <LamaImg src={this.state.weatherdes === "clear sky" || "snow" ? excited
                   :
-                  this.state.weathermain === "Clear" ? excited : 
-                  this.state.weathermain === "Clouds" ? happy 
-                  :
-                  this.state.weathermain === "clear sky" ? excited
-                  :
-                  this.state.weathermain === "few clouds" ? happy : 
-                  this.state.weathermain === "scattered clouds" ? happy 
-                  : 
-                  this.state.weathermain === "broken clouds" ? sad
-                  :
-                  this.state.weathermain === "Drizzle" ? sad
-                  :
-                  this.state.weathermain === "shower rain" ? sad : 
-                  this.state.weathermain === "thunderstorm" ? excited
-                  :
-                  this.state.weathermain === "mist" ? sad
-                  :
-                  this.state.weathermain === "snow" ? excited
-                  : 
+                  this.state.weatherdes === "few clouds" || "scattered clouds" ? happy :
+                  this.state.weatherdes === "shower rain" || "rain" || "broken clouds" || "mist" ? sad : 
+                  this.state.weatherdes === "thunderstorm" ? horrified :
                   sad
                 } alt="lama" />
             <BubbleContainer>
               <BubbleTriangle />
               <Bubble><Speech>
-                {this.state.weathermain === "Rain" ? "It's raining! At least it's good for the plants..."
-                  :
-                  this.state.weathermain === "Clear" ? "Not a cloud!" : this.state.weathermain === "Clouds" ? "It's pretty cloudy. This cloud looks like you..." 
-                  :
-                  this.state.weathermain === "clear sky" ? "Perfect sky! We can go out and enjoy it!"
-                  :
-                  this.state.weathermain === "few clouds" ? "Slightly cloudy sky." : this.state.weathermain === "scattered clouds" ? "Barely any clouds." 
+                {this.state.weatherdes === "rain" ? "It's raining! At least it's good for the plants..."
+                  : this.state.weatherdes === "few clouds" ? "It's pretty cloudy. This cloud looks like you..." 
+                  : this.state.weatherdes === "clear sky" ? "Perfect sky! We can go out and enjoy it!"
+                  : this.state.weatherdes === "scattered clouds" ? "Barely any clouds." 
                   : 
-                  this.state.weathermain === "broken clouds" ? "Are those dark clouds..."
+                  this.state.weatherdes === "broken clouds" ? "Are those dark clouds..."
                   :
-                  this.state.weathermain === "Drizzle" ? "It's drizzling. I hope it stops soon."
-                  :
-                  this.state.weathermain === "shower rain" ? "Oh well, it's raining. But not that much." : this.state.weathermain === "thunderstorm" ? "Thunderstorms. Let's stay inside." 
-                  :
-                  this.state.weathermain === "mist" ? "Spooky, I like it."
-                  :
-                  this.state.weathermain === "snow" ? "Yay! Let's build a snowman!"
-                  : 
-                  "Good question indeed. What's the weather like?"
+                  this.state.weatherdes === "light rain" ? "It's drizzling. I hope it stops soon."
+                  : this.state.weatherdes === "moderate rain" ? "Oh well, it's raining. But not that much." 
+                  : this.state.weatherdes === "thunderstorm" ? "Thunderstorms. Let's stay inside." 
+                  : this.state.weatherdes === "mist" ? "Spooky, I like it."
+                  : this.state.weatherdes === "snow" ? "Yay! Let's build a snowman!"
+                  : "Good question indeed. What's the weather like?"
                 }</Speech>
               </Bubble>
 
