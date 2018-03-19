@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Container, Relative, TopContainer, DD, Background, Title, LamaContainer, LamaImg, Bubble, Speech, BubbleTriangle, BubbleContainer, BlockContainer, Block, TopBlock, MiniTitle, BottomBlock, MiniImg, DataText, SpeechData, Cities } from './components';
 
-
-const API_KEY = "7d19523678b80c45bc75b140ae11de1d";
 const lama = require('./img/lama.png');
 const drops = require('./img/drops.png');
 const gouttes = require('./img/gouttes.png');
@@ -70,18 +68,11 @@ class App extends Component {
     this.getTheStuff("Barcelona");
   }
 
-  componentDidUpdate() {
-    console.log("comp did UPDATE");
-    this.state.weathermain === "Rain" ?this.state.colorOneX="#54ACEB" : "red";
-    console.log(this.state.colorOneX)
-  }
-
   // <Title currentCity={this.state.city} changeCity={(city) => this.changeCity(city) }>
 
   // <p onClick={props.changeCity("Barcelona")}>Barcelona</p>
 
   render(props) {
-    let tempText = getTempText(this.state.weathertemp);
     return (
       <Container 
       // colorOne={this.state.weathermain === "Rain" ?"#54ACEB" : this.state.weathermain === "Clear" ? "#EDB124" : "#ED6886" }
